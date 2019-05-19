@@ -1,19 +1,7 @@
-require "Time"
-require_relative "Index"
-require_relative "Log"
+require_relative "order"
+require_relative "random"
 
-i = Index.new
-
-l = Log.new
-l.timestamp = Time.parse('2012-01-30')
-l.message = "message 1"
-
-puts i
-puts l
-
-m = Log.new
-m.timestamp = Time.parse('2012-02-01')
-m.message = "message 2"
-
-puts i
-puts m
+for i in 1..3500 do
+	startDate = Time.parse('2019-05-13T18:30:00.000-0500') + randomTimeOffset
+	order(startDate)
+end

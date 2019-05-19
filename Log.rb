@@ -1,4 +1,5 @@
 require 'json'
+require 'time'
 
 class Log
 	attr_writer :appId
@@ -10,8 +11,11 @@ class Log
 	attr_writer :message
 
 	def initialize
-		@timestamp = Time.now
-		@type = "test"
+		@level       = "INFO"
+		@timestamp   = Time.now
+		@type        = "test"
+		@environment = "Prod"
+		@appId       = "31417"
 	end
 
 	def timestamp=(timestamp)
@@ -25,13 +29,13 @@ class Log
 			"@timestamp" => @timestamp.gmtime.xmlschema(3),
 		}
 
-		message["@class"]       = @class       if @class
-		message["@contract"]    = @contract    if @contract
-		message["@environment"] = @environment if @environment
-		message["@level"]       = @level       if @level
-		message["message"]      = @message     if @message
-		message["appId"]        = @appId       if @appId
-		message["host"]         = @host        if @host
+		message["class"]       = @class       if @class
+		message["contract"]    = @contract    if @contract
+		message["environment"] = @environment if @environment
+		message["level"]       = @level       if @level
+		message["message"]     = @message     if @message
+		message["appId"]       = @appId       if @appId
+		message["host"]        = @host        if @host
 
 		message.to_json(*a)
 	end
