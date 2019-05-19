@@ -22,7 +22,7 @@ class Log
 	def to_json(*a)
 		message = {
 			"@version"   => "1",
-			"@timestamp" => @timestamp.strftime('%FT%T.%LZ'),
+			"@timestamp" => @timestamp.gmtime.xmlschema(3),
 		}
 
 		message["@class"]       = @class       if @class
