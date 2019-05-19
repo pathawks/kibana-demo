@@ -5,7 +5,7 @@ class Index
 	attr_writer :type
 
 	def initialize
-		@index = "test-6"
+		@index = "log-1"
 		@type  = "test"
 	end
 
